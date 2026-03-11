@@ -3,108 +3,136 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import {
-  Code2,
-  Palette,
+  Lightbulb,
   Database,
   Cloud,
-  Wrench,
-  Terminal,
+  Shield,
+  BarChart3,
+  Cpu,
+  Award,
+  Users,
 } from "lucide-react";
 
 const skillCategories = [
   {
-    id: "frontend",
-    name: "前端开发",
-    icon: Code2,
-    description: "构建现代化、响应式的用户界面",
+    id: "product",
+    name: "产品管理",
+    icon: Lightbulb,
+    description: "产品生命周期管理与战略规划",
     skills: [
-      "React",
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "Framer Motion",
-      "Vue.js",
-      "HTML5/CSS3",
+      "产品生命周期管理",
+      "市场进入策略",
+      "数据驱动决策",
+      "路线图规划",
+      "敏捷开发管理",
+      "跨职能领导力",
     ],
     color: "from-blue-500 to-cyan-500",
   },
   {
-    id: "backend",
-    name: "后端开发",
-    icon: Terminal,
-    description: "设计和实现高性能的服务端架构",
+    id: "storage",
+    name: "数据保护与存储",
+    icon: Database,
+    description: "企业级存储与数据保护技术",
     skills: [
-      "Node.js",
-      "Python",
-      "PostgreSQL",
-      "MongoDB",
-      "GraphQL",
-      "REST API",
-      "Redis",
+      "数据保护",
+      "重复数据删除",
+      "云长期保留",
+      "分布式存储",
+      "备份与恢复",
+      "存储引擎",
     ],
     color: "from-green-500 to-emerald-500",
   },
   {
-    id: "design",
-    name: "UI/UX 设计",
-    icon: Palette,
-    description: "创造直观、美观的用户体验",
+    id: "security",
+    name: "网络安全",
+    icon: Shield,
+    description: "网络弹性与数据安全",
     skills: [
-      "Figma",
-      "Adobe XD",
-      "Prototyping",
-      "User Research",
-      "Design Systems",
-      "Wireframing",
-    ],
-    color: "from-purple-500 to-pink-500",
-  },
-  {
-    id: "cloud",
-    name: "云服务",
-    icon: Cloud,
-    description: "部署和运维可扩展的云基础设施",
-    skills: [
-      "AWS",
-      "Docker",
-      "Kubernetes",
-      "CI/CD",
-      "Vercel",
-      "Terraform",
-      "Linux",
-    ],
-    color: "from-orange-500 to-amber-500",
-  },
-  {
-    id: "database",
-    name: "数据库",
-    icon: Database,
-    description: "设计高效、可靠的数据存储方案",
-    skills: [
-      "PostgreSQL",
-      "MongoDB",
-      "MySQL",
-      "Prisma",
-      "Redis",
-      "Elasticsearch",
+      "网络弹性",
+      "勒索软件检测",
+      "网络恢复",
+      "数据不可变保护",
+      "安全架构",
+      "合规管理",
     ],
     color: "from-red-500 to-rose-500",
   },
   {
-    id: "tools",
-    name: "开发工具",
-    icon: Wrench,
-    description: "使用现代工具提升开发效率",
+    id: "ai",
+    name: "人工智能与机器学习",
+    icon: Cpu,
+    description: "人工智能与机器学习应用",
     skills: [
-      "Git",
-      "VS Code",
-      "Jest",
-      "Cypress",
-      "Webpack",
-      "Vite",
-      "Storybook",
+      "智能运维",
+      "异常检测",
+      "生成式AI",
+      "大语言模型集成",
+      "机器学习模型训练",
+      "AI助手",
+    ],
+    color: "from-purple-500 to-pink-500",
+  },
+  {
+    id: "observability",
+    name: "可观测性",
+    icon: BarChart3,
+    description: "系统监控与数据分析",
+    skills: [
+      "OpenTelemetry",
+      "Grafana",
+      "PowerBI",
+      "遥测数据分析",
+      "健康评分",
+      "碳足迹监控",
+    ],
+    color: "from-orange-500 to-amber-500",
+  },
+  {
+    id: "cloud",
+    name: "云原生",
+    icon: Cloud,
+    description: "云计算与容器化技术",
+    skills: [
+      "云原生架构",
+      "Kubernetes",
+      "容器存储接口",
+      "微服务",
+      "云分层",
+      "混合云",
     ],
     color: "from-violet-500 to-purple-500",
+  },
+  {
+    id: "patents",
+    name: "专利与认证",
+    icon: Award,
+    description: "知识产权与专业认证",
+    skills: [
+      "11项美国发明专利",
+      "云长期保留专利",
+      "重复数据删除专利",
+      "网络安全专利",
+      "认证 Scrum 主管",
+      "英语流利",
+    ],
+    color: "from-yellow-500 to-amber-500",
+  },
+  {
+    id: "leadership",
+    name: "领导力",
+    icon: Users,
+    description: "团队管理与全球协作",
+    skills: [
+      "全球团队领导",
+      "跨职能协调",
+      "研发效率提升",
+      "技术战略规划",
+      "利益相关者管理",
+      "财富500强客户",
+    ],
+    color: "from-teal-500 to-cyan-500",
   },
 ];
 
@@ -180,18 +208,18 @@ export default function Skills() {
           className="text-center mb-16"
         >
           <p className="text-[#a1a1a6] text-sm tracking-widest uppercase mb-4">
-            技术栈
+            专业能力
           </p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
-            专业技能
+            核心技能
           </h2>
           <p className="text-[#a1a1a6] text-lg max-w-2xl mx-auto">
-            我熟练掌握多种现代技术栈，能够根据项目需求选择最合适的技术方案。
+            涵盖产品管理、数据保护、人工智能、云原生等领域的专业技能，持有11项美国发明专利。
           </p>
         </motion.div>
 
         {/* Skills Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {skillCategories.map((category, index) => (
             <SkillCategory key={category.id} category={category} index={index} />
           ))}

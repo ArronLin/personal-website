@@ -2,33 +2,31 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Send, Mail, MapPin, Phone, Github, Linkedin, Twitter, CheckCircle } from "lucide-react";
+import { Send, Mail, MapPin, Phone, Linkedin, CheckCircle, Award } from "lucide-react";
 
 const contactInfo = [
   {
     icon: Mail,
     label: "邮箱",
-    value: "hello@example.com",
-    href: "mailto:hello@example.com",
+    value: "linmatrix@outlook.com",
+    href: "mailto:linmatrix@outlook.com",
   },
   {
     icon: Phone,
     label: "电话",
-    value: "+86 138 0000 0000",
-    href: "tel:+8613800000000",
+    value: "+86 18349215983",
+    href: "tel:+8618349215983",
   },
   {
     icon: MapPin,
     label: "位置",
-    value: "中国 · 北京",
+    value: "中国 · 成都",
     href: null,
   },
 ];
 
 const socialLinks = [
-  { name: "GitHub", icon: Github, href: "https://github.com" },
   { name: "LinkedIn", icon: Linkedin, href: "https://linkedin.com" },
-  { name: "Twitter", icon: Twitter, href: "https://twitter.com" },
 ];
 
 export default function Contact() {
@@ -84,7 +82,7 @@ export default function Contact() {
             联系我
           </h2>
           <p className="text-[#a1a1a6] text-lg max-w-2xl mx-auto">
-            有项目想法或合作机会？欢迎随时与我联系，我会尽快回复您。
+            有合作机会或技术交流？欢迎随时与我联系，我会尽快回复您。
           </p>
         </motion.div>
 
@@ -149,14 +147,27 @@ export default function Contact() {
               </div>
             </div>
 
+            {/* Patents Highlight */}
+            <div className="glass rounded-2xl p-6">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="p-2 rounded-lg bg-gradient-to-br from-blue-500 to-purple-500">
+                  <Award className="w-5 h-5 text-white" />
+                </div>
+                <span className="text-white font-medium">11 项美国发明专利</span>
+              </div>
+              <p className="text-[#a1a1a6] text-sm">
+                在云长期保留、重复数据删除和网络安全增强保护等核心领域拥有专利技术。
+              </p>
+            </div>
+
             {/* Availability */}
             <div className="glass rounded-2xl p-6">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse" />
-                <span className="text-white font-medium">目前可接新项目</span>
+                <span className="text-white font-medium">开放合作机会</span>
               </div>
               <p className="text-[#a1a1a6] text-sm">
-                我目前有空档时间，可以承接新的项目合作。如果您有任何想法，欢迎随时联系！
+                目前对数据保护、AI/ML、产品管理领域的咨询和合作机会持开放态度。
               </p>
             </div>
           </motion.div>
@@ -240,7 +251,7 @@ export default function Contact() {
                         required
                         rows={5}
                         className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-[#a1a1a6] focus:outline-none focus:border-white/30 transition-colors resize-none"
-                        placeholder="请描述您的项目或想法..."
+                        placeholder="请描述您的合作想法或问题..."
                       />
                     </div>
                   </div>

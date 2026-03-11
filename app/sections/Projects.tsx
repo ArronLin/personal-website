@@ -1,68 +1,63 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, Github } from "lucide-react";
+import { Shield, Database, Cloud, Cpu, LineChart, Bot } from "lucide-react";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 
 const projects = [
   {
     id: 1,
-    title: "电商平台",
-    description: "全功能电商平台，支持商品管理、购物车、支付集成和订单追踪。",
-    tags: ["Next.js", "TypeScript", "Stripe", "Prisma"],
-    github: "https://github.com",
-    demo: "https://demo.com",
+    title: "Dell AIOps 平台集成",
+    description: "领导 PPDM 和 PPDD 与 Dell AIOps 平台的深度集成，实现碳足迹实时监控、健康评分模型优化，显著提升产品在可持续运营和AI驱动运维方面的价值。",
+    tags: ["智能运维", "碳足迹监控", "健康评分", "平台集成"],
+    icon: Cpu,
     color: "from-blue-500/20 to-cyan-500/20",
   },
   {
     id: 2,
-    title: "任务管理应用",
-    description: "协作式任务管理工具，支持实时同步、团队工作区和进度追踪。",
-    tags: ["React", "Node.js", "Socket.io", "MongoDB"],
-    github: "https://github.com",
-    demo: "https://demo.com",
-    color: "from-purple-500/20 to-pink-500/20",
-  },
-  {
-    id: 3,
-    title: "数据可视化仪表盘",
-    description: "实时数据监控仪表盘，支持多种图表类型和自定义报表。",
-    tags: ["Vue.js", "D3.js", "Python", "FastAPI"],
-    github: "https://github.com",
-    demo: "https://demo.com",
+    title: "OpenTelemetry 标准化",
+    description: "主导 PPDD/PPDM/DM5500 的 OpenTelemetry 标准化改造，统一遥测数据格式，支持后端机器学习挖掘和本地 PowerBI/Grafana 自助监控。",
+    tags: ["可观测性", "遥测分析", "机器学习", "Grafana"],
+    icon: LineChart,
     color: "from-emerald-500/20 to-teal-500/20",
   },
   {
-    id: 4,
-    title: "社交媒体应用",
-    description: "移动端优先的社交平台，支持发布、评论、点赞和私信功能。",
-    tags: ["React Native", "Firebase", "Redux", "Expo"],
-    github: "https://github.com",
-    demo: "https://demo.com",
-    color: "from-orange-500/20 to-red-500/20",
+    id: 3,
+    title: "AI/ML 异常检测",
+    description: "基于 DPA/PPDM 数据保护产品的丰富经验，为异常检测能力提供关键建议和实际支持，建立用户反馈循环，显著降低误报率，提升勒索软件检测可靠性。",
+    tags: ["人工智能", "异常检测", "网络安全", "勒索软件防护"],
+    icon: Shield,
+    color: "from-purple-500/20 to-pink-500/20",
   },
   {
-    id: 5,
-    title: "AI 内容生成器",
-    description: "基于 GPT 的智能内容生成工具，支持多种内容类型和风格定制。",
-    tags: ["Next.js", "OpenAI", "Tailwind", "Vercel"],
-    github: "https://github.com",
-    demo: "https://demo.com",
+    id: 4,
+    title: "生成式 AI 对话助手",
+    description: "作为核心团队成员参与 PPDM 生成式 AI 对话助手的产品化，提供智能自然语言指导，简化网络弹性目标实现，提升运营效率和服务等级协议合规性。",
+    tags: ["生成式AI", "大语言模型", "网络弹性", "服务等级协议"],
+    icon: Bot,
     color: "from-violet-500/20 to-purple-500/20",
   },
   {
+    id: 5,
+    title: "数据不可变保护",
+    description: "与网络恢复团队合作，在 PPDM 中实现数据不可变保护功能，完善企业网络弹性闭环，加速网络恢复解决方案销售。",
+    tags: ["网络恢复", "数据保护", "企业安全"],
+    icon: Database,
+    color: "from-orange-500/20 to-red-500/20",
+  },
+  {
     id: 6,
-    title: "在线教育平台",
-    description: "互动式学习平台，支持视频课程、实时测验和学习进度追踪。",
-    tags: ["React", "GraphQL", "AWS", "Docker"],
-    github: "https://github.com",
-    demo: "https://demo.com",
+    title: "云长期保留",
+    description: "设计并实现云长期保留解决方案，拥有多项相关美国发明专利，优化存储成本，支持企业级数据生命周期管理。",
+    tags: ["云存储", "专利技术", "成本优化", "数据生命周期"],
+    icon: Cloud,
     color: "from-amber-500/20 to-yellow-500/20",
   },
 ];
 
 function ProjectCard({ project, index }: { project: typeof projects[0]; index: number }) {
+  const Icon = project.icon;
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -81,32 +76,13 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
         <div className="relative z-10">
           {/* Header */}
           <div className="flex items-start justify-between mb-4">
-            <h3 className="text-xl font-bold text-white group-hover:text-white transition-colors">
-              {project.title}
-            </h3>
-            <div className="flex gap-2">
-              <motion.a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 text-[#a1a1a6] hover:text-white transition-colors"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                aria-label="View GitHub repository"
-              >
-                <Github size={18} />
-              </motion.a>
-              <motion.a
-                href={project.demo}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 text-[#a1a1a6] hover:text-white transition-colors"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                aria-label="View live demo"
-              >
-                <ExternalLink size={18} />
-              </motion.a>
+            <div className="flex items-center gap-3">
+              <div className="p-2 rounded-lg bg-white/10">
+                <Icon className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-white group-hover:text-white transition-colors">
+                {project.title}
+              </h3>
             </div>
           </div>
 
@@ -148,13 +124,13 @@ export default function Projects() {
           className="text-center mb-16"
         >
           <p className="text-[#a1a1a6] text-sm tracking-widest uppercase mb-4">
-            精选作品
+            核心项目
           </p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
-            项目展示
+            产品与技术成果
           </h2>
           <p className="text-[#a1a1a6] text-lg max-w-2xl mx-auto">
-            以下是我近期完成的一些项目，涵盖了 Web 应用、移动端开发和数据可视化等多个领域。
+            在数据保护、企业存储和人工智能领域的核心项目成果，涵盖平台集成、可观测性、网络安全和生成式AI等前沿技术。
           </p>
         </motion.div>
 
